@@ -9,82 +9,87 @@
 
 # def get_thread(thread_list):
 
-def parallel_processing_new(n, m, data):
-    output = []
-    # TODO: write the function for simulating parallel tasks, 
-    # create the output pairs
-    time = [0] * n # saving time
-    for i in range(m):
-        min_thread = time.index(min(time))
-        output.append((min_thread, time[min_thread]))
-        time[min_thread] += data[i]
-    return output
+# n - amount of threads
+# m - amount of tasks
+# data - individual task length
+# def parallel_processing_new(n, m, data):
+#     output = []
+#     # TODO: write the function for simulating parallel tasks, 
+#     # create the output pairs
+#     ticks = [0] * n
+
+#     for task in range(m):
+#         free_thread = ticks.index(min(ticks))
+#         # 
+#         output.append((free_thread, ticks[free_thread]))
+#         ticks[free_thread] += data[task]
+#     return output
 
 
-def parallel_processing(n, m, data):
-    output = []
-    threads = []
-    thr = []
-    # TODO: write the function for simulating parallel tasks,
-    # create the output pairs
-    rev = []
+# def parallel_processing(n, m, data):
+#     output = []
+#     threads = []
+#     thr = []
+#     # TODO: write the function for simulating parallel tasks,
+#     # create the output pairs
+#     rev = []
 
-    for i in reversed(data):
-        rev.append(i)
+#     for i in reversed(data):
+#         rev.append(i)
 
-    for i in range(n):
-        thr.append(i)
+#     for i in range(n):
+#         thr.append(i)
 
-    for i in thr:
-        a = i, rev.pop() - 1
-        threads.append(a)
-        m = m - 1
+#     for i in thr:
+#         a = i, rev.pop() - 1
+#         threads.append(a)
+#         m = m - 1
 
-    #print(len(threads))
+#     #print(len(threads))
 
-    counter = 0
-    while True:
+#     counter = 0
+#     while True:
 
-        t = data[counter]
+#         t = data[counter]
 
-        # for thread in range(len(threads)):
-        #     values = threads[thread]
-        #     if values[1] == 0:
-        #         values = (thread, rev.pop() - 1)
-        #         m = m - 1
-        #     else:
-        #         values = (thread, thread[1] - 1)
+#         # for thread in range(len(threads)):
+#         #     values = threads[thread]
+#         #     if values[1] == 0:
+#         #         values = (thread, rev.pop() - 1)
+#         #         m = m - 1
+#         #     else:
+#         #         values = (thread, thread[1] - 1)
 
-        #     out = values, counter
-        #     output.append(out)
+#         #     out = values, counter
+#         #     output.append(out)
 
-        for i in threads:
-            #print(i)
+#         for i in threads:
+#             #print(i)
             
 
-            if i[1] == 0:
+#             if i[1] == 0:
                 
 
-                i = i[0], rev.pop() - 1
+#                 i = i[0], rev.pop() - 1
 
                 
-                m = m - 1
-            else:
-                i = i[0], i[1] - 1
+#                 m = m - 1
+#             else:
+#                 i = i[0], i[1] - 1
 
-            out = i[0], counter
-            output.append(out)
+#             out = i[0], counter
+#             output.append(out)
 
-        # print(counter)
-        counter = counter + 1
+#         # print(counter)
+#         counter = counter + 1
 
-        if m == 0:
-            for i in threads:
-                out = i[0], counter
-                output.append(out)
-            break
+#         if m == 0:
+#             for i in threads:
+#                 out = i[0], counter
+#                 output.append(out)
+#             break
 
-    return output
+#     return output
 
 # NOTE: Tried another method.
 # Got confused.
@@ -92,91 +97,92 @@ def parallel_processing(n, m, data):
 # Only which thread takes the task.
 
 
-# class CustomTask:
-#     def __init__(self, id, time):
-#         self.id = id
-#         self.time = time
+class CustomTask:
+    def __init__(self, id, time):
+        self.id = id
+        self.time = time
 
 
-# class CustomThread:
-#     def __init__(self, id, task_id, timer):
-#         self.id = id
-#         self.task_id = task_id
-#         self.timer = timer
+class CustomThread:
+    def __init__(self, id, task_id, timer):
+        self.id = id
+        self.task_id = task_id
+        self.timer = timer
 
 
-# # declare lists
-# # th1 = CustomThread(0, -1, 0)
-# # th2 = CustomThread(1, -1, 0)
-# #
-# # tsk1 = CustomTask(0, 1)
-# # tsk2 = CustomTask(1, 2)
-# # tsk3 = CustomTask(2, 3)
-# # tsk4 = CustomTask(3, 4)
-# # tsk5 = CustomTask(4, 5)
-# #
-# # th_list = [th1, th2]
-# # tsk_list = [tsk1, tsk2, tsk3, tsk4, tsk5]
+# declare lists
+# th1 = CustomThread(0, -1, 0)
+# th2 = CustomThread(1, -1, 0)
+#
+# tsk1 = CustomTask(0, 1)
+# tsk2 = CustomTask(1, 2)
+# tsk3 = CustomTask(2, 3)
+# tsk4 = CustomTask(3, 4)
+# tsk5 = CustomTask(4, 5)
+#
+# th_list = [th1, th2]
+# tsk_list = [tsk1, tsk2, tsk3, tsk4, tsk5]
 
-# th_list = []
-# tsk_list = []
-
-
-# def get_thread():
-#     for th in th_list:
-#         if th.task_id == -1:
-#             return th
-#     # no thread is available
-#     return None
+th_list = []
+tsk_list = []
 
 
-# def decrease_timer():
-#     for th in th_list:
-#         if th.task_id == -1:
-#             continue
-
-#         th.timer = th.timer - 1
-#         if th.timer == 0:
-#             th.task_id = -1
+def get_thread():
+    for th in th_list:
+        if th.task_id == -1:
+            return th
+    # no thread is available
+    return None
 
 
-# i = 1
+def decrease_timer():
+    for th in th_list:
+        if th.task_id == -1:
+            continue
 
-# n = 0
-# m = 0
+        th.timer = th.timer - 1
+        if th.timer == 0:
+            th.task_id = -1
 
-# values = input().split()
 
-# n = int(values[0])
-# m = int(values[1])
+i = 1
 
-# for j in range(n):
-#     th_list.append(CustomThread(j, -1, 0))
+n = 0
+m = 0
 
-# data = []
-# data_temp = []
-# data_temp = input().split()
+values = input().split()
 
-# order = 0
-# for j in data_temp:
-#     data.append(int(i))
-#     tsk_list.append(CustomTask(order, int(j)))
-#     order += 1
+n = int(values[0])
+m = int(values[1])
 
-# while len(tsk_list) > 0:
-#     # for x in range(
-#     th_to_work = get_thread()
+for j in range(n):
+    th_list.append(CustomThread(j, -1, 0))
 
-# #  gives a thread
-#     if th_to_work is not None:
-#         th_to_work.task_id = tsk_list[0].id
-#         th_to_work.timer = tsk_list[0].time
-#         print("th:" + str(th_to_work.id) + "-tsk:" + str(tsk_list[0].id))
-#         tsk_list.pop(0)
+data = []
+data_temp = []
+data_temp = input().split()
 
-#     decrease_timer()
+order = 0
+for j in data_temp:
+    data.append(int(i))
+    tsk_list.append(CustomTask(order, int(j)))
+    order += 1
 
-#     i = i + 1
+while len(tsk_list) > 0:
+    # for x in range(
+    for j in range(n):
+        th_to_work = get_thread()
+
+#  gives a thread
+        if th_to_work is not None:
+            th_to_work.task_id = tsk_list[0].id
+            th_to_work.timer = tsk_list[0].time
+            print(str(th_to_work.id)+ str(i - 1))
+            tsk_list.pop(0)
+
+    decrease_timer()
+
+    i = i + 1
 
 
 
