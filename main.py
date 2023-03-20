@@ -144,45 +144,45 @@ def decrease_timer():
         if th.timer == 0:
             th.task_id = -1
 
+def main():
+    i = 1
 
-i = 1
+    n = 0
+    m = 0
 
-n = 0
-m = 0
+    values = input().split()
 
-values = input().split()
+    n = int(values[0])
+    m = int(values[1])
 
-n = int(values[0])
-m = int(values[1])
-
-for j in range(n):
-    th_list.append(CustomThread(j, -1, 0))
-
-data = []
-data_temp = []
-data_temp = input().split()
-
-order = 0
-for j in data_temp:
-    data.append(int(i))
-    tsk_list.append(CustomTask(order, int(j)))
-    order += 1
-
-while len(tsk_list) > 0:
-    # for x in range(
     for j in range(n):
-        th_to_work = get_thread()
+        th_list.append(CustomThread(j, -1, 0))
 
-#  gives a thread
-        if th_to_work is not None:
-            th_to_work.task_id = tsk_list[0].id
-            th_to_work.timer = tsk_list[0].time
-            print(str(th_to_work.id)+ str(i - 1))
-            tsk_list.pop(0)
+    data = []
+    data_temp = []
+    data_temp = input().split()
 
-    decrease_timer()
+    order = 0
+    for j in data_temp:
+        data.append(int(i))
+        tsk_list.append(CustomTask(order, int(j)))
+        order += 1
 
-    i = i + 1
+    while len(tsk_list) > 0:
+        # for x in range(
+        for j in range(n):
+            th_to_work = get_thread()
+
+    #  gives a thread
+            if th_to_work is not None:
+                th_to_work.task_id = tsk_list[0].id
+                th_to_work.timer = tsk_list[0].time
+                print(str(th_to_work.id)+ " " + str(i - 1))
+                tsk_list.pop(0)
+
+        decrease_timer()
+
+        i = i + 1
 
 
 
@@ -253,37 +253,37 @@ while len(tsk_list) > 0:
 #     return output
 
 
-def main():
-    # TODO: create input from keyboard
-    # input consists of two lines
-    # first line - n and m
-    # n - thread count
-    # m - job count
-    n = 0
-    m = 0
+# def main():
+#     # TODO: create input from keyboard
+#     # input consists of two lines
+#     # first line - n and m
+#     # n - thread count
+#     # m - job count
+#     n = 0
+#     m = 0
 
-    values = input().split()
+#     values = input().split()
 
-    n = int(values[0])
-    m = int(values[1])
+#     n = int(values[0])
+#     m = int(values[1])
 
 
-    # second line - data 
-    # data - contains m integers t(i) - the times in seconds it takes any thread to process i-th job
-    data = []
-    # data = [1, 2, 3, 4, 5]
-    data_temp = []
-    data_temp = input().split()
+#     # second line - data 
+#     # data - contains m integers t(i) - the times in seconds it takes any thread to process i-th job
+#     data = []
+#     # data = [1, 2, 3, 4, 5]
+#     data_temp = []
+#     data_temp = input().split()
 
-    for i in data_temp:
-        data.append(int(i))
+#     for i in data_temp:
+#         data.append(int(i))
 
-    # TODO: create the function
-    result = parallel_processing_new(n, m, data)
+#     # TODO: create the function
+#     result = parallel_processing_new(n, m, data)
 
-    # TODO: print out the results, each pair in it's own line
-    for i, j in result:
-        print(i, j)
+#     # TODO: print out the results, each pair in it's own line
+#     for i, j in result:
+#         print(i, j)
 
 
 
