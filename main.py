@@ -35,33 +35,33 @@ def parallel_processing(n, m, data):
 
         t = data[counter]
 
-        # for thread in range(len(threads)):
-        #     values = threads[thread]
-        #     if values[1] == 0:
-        #         values = (thread, rev.pop() - 1)
-        #         m = m - 1
-        #     else:
-        #         values = (thread, thread[1] - 1)
+        for thread in range(len(threads)):
+            values = threads[thread]
+            if values[1] == 0:
+                values = (thread, rev.pop() - 1)
+                m = m - 1
+            else:
+                values = (thread, thread[1] - 1)
 
-        #     out = values, counter
-        #     output.append(out)
+            out = values, counter
+            output.append(out)
 
-        # for i in threads:
-        #     print(i)
+        for i in threads:
+            print(i)
             
 
-        #     if i[1] == 0:
+            if i[1] == 0:
                 
 
-        #         i = i[0], rev.pop() - 1
+                i = i[0], rev.pop() - 1
 
                 
-        #         m = m - 1
-        #     else:
-        #         i = i[0], i[1] - 1
+                m = m - 1
+            else:
+                i = i[0], i[1] - 1
 
-        #     out = i[0], counter
-        #     output.append(out)
+            out = i[0], counter
+            output.append(out)
 
         # print(counter)
         counter = counter + 1
