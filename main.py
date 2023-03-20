@@ -244,20 +244,18 @@ def main():
     n = 0
     m = 0
 
-    # values = input().split()
+    values = input().split()
 
-    # n = int(values[0])
-    # m = int(values[1])
+    n = int(values[0])
+    m = int(values[1])
 
-    n = 2
-    m = 5
 
     # second line - data 
     # data - contains m integers t(i) - the times in seconds it takes any thread to process i-th job
-    # data = []
-    data = [1, 2, 3, 4, 5]
+    data = []
+    # data = [1, 2, 3, 4, 5]
     data_temp = []
-    # data_temp = input().split()
+    data_temp = input().split()
 
     for i in data_temp:
         data.append(int(i))
