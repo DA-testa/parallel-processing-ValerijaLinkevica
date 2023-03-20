@@ -28,26 +28,26 @@ def parallel_processing(n, m, data):
         threads.append(a)
         m = m - 1
 
-    print(len(threads))
+    #print(len(threads))
 
     counter = 0
     while True:
 
         t = data[counter]
 
-        for thread in range(len(threads)):
-            values = threads[thread]
-            if values[1] == 0:
-                values = (thread, rev.pop() - 1)
-                m = m - 1
-            else:
-                values = (thread, thread[1] - 1)
+        # for thread in range(len(threads)):
+        #     values = threads[thread]
+        #     if values[1] == 0:
+        #         values = (thread, rev.pop() - 1)
+        #         m = m - 1
+        #     else:
+        #         values = (thread, thread[1] - 1)
 
-            out = values, counter
-            output.append(out)
+        #     out = values, counter
+        #     output.append(out)
 
         for i in threads:
-            print(i)
+            #print(i)
             
 
             if i[1] == 0:
